@@ -1,0 +1,104 @@
+/* General styles for the body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f0fc; /* Lila muy suave para el fondo */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Container for the chat */
+#chat-container {
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header of the chat */
+#chat-header {
+    background-color: #8a2be2; /* Violeta oscuro para el header */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat box where messages will appear */
+#chat-box {
+    flex-grow: 1;
+    padding: 15px;
+    background-color: #f8f0fc; /* Fondo lila muy suave */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-box p {
+    background-color: #e6e1f7; /* Lila claro para los mensajes */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    max-width: 80%;
+    align-self: flex-start;
+    word-wrap: break-word;
+}
+
+/* User's message styling */
+#chat-box p.user-message {
+    background-color: #d1c4e9; /* Lila suave para mensajes del usuario */
+    align-self: flex-end;
+}
+
+/* Input area */
+#chat-input {
+    display: flex;
+    padding: 15px;
+    background-color: #f8f0fc;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#chat-input input:focus {
+    border-color: #8a2be2; /* Violeta oscuro */
+}
+
+#chat-input button {
+    padding: 10px 20px;
+    background-color: #8a2be2; /* Botón en violeta */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#chat-input button:hover {
+    background-color: #9c47eb; /* Ligeramente más claro al pasar el mouse */
+}
+
+#chat-input button:active {
+    background-color: #6c1cb8; /* Botón más oscuro al hacer clic */
+}

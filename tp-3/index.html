@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-header">
+            Chat
+        </div>
+        <div id="chat-box">
+        </div>
+        <div id="chat-input">
+            <input type="text" id="message" placeholder="Escribe un mensaje">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+
+        socket.onopen = function() {
+            console.log('Conectado al servidor');
+        };
+
+        socket.onmessage = function(event) {
+            const encryptedMessage = event.data;
+            const decryptedMessage = decryptMessage(encryptedMessage);
+            const messageElement = document.createElement('p');
+            messageElement.textContent = decryptedMessage;
+            document.getElementById('chat-box').appendChild(messageElement);
+        };
+
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+            const encryptedMessage = encryptMessage(message);
+            socket.send(encryptedMessage);
+
+            // Mostrar el mensaje
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+            messageElement.classList.add('user-message'); // Estilo para mensajes del usuario
+            document.getElementById('chat-box').appendChild(messageElement);
+
+            document.getElementById('message').value = '';
+        }
+
+        // Funciones de cifrado/descifrado (Para el prox punto)
+        function encryptMessage(message) {
+            return btoa(message);
+        }
+
+        function decryptMessage(encryptedMessage) {
+            return atob(encryptedMessage);
+        }
+    </script>
+</body>
+</html>
